@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Welcome
+{% endblock %}
+
+
+{% block content %}
+<body background="{% static 'images/banner.jpg' %}">
+<div class="container-fluid">
+    <div class="row">
+        <div style="font-weight:bold;">
+            {% if user.is_authenticated %}
+            <p style="font-size:4rem; margin-left:25rem; margin-top:9rem;">Welcome, {{user.username}}</p>
+            <p style="font-size:2rem; margin-left:31rem;">Click <a href="{% url 'store_app:form' %}">here</a> to fill the form </p>
+            {% else %}
+            <p style="font-size:4rem; margin-left:30rem; margin-top:9rem; color:red;">Please login first</p>
+            <p style="font-size:2rem; margin-left:38rem;">Click <a href="{% url 'store_app:login' %}">here</a> to Login </p>
+
+            {% endif %}
+        </div>
+    </div>
+</div>
+</body>
+
+{% endblock %}
